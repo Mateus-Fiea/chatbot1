@@ -62,8 +62,6 @@ def obter_informacoes_fonte_financiadora():
     return """
     🔹 **Fonte Financiadora**:
     - Para **fontes financiadoras** como **SEBRAE**, **SENAI**, **ABDI**, etc., deve-se utilizar o **modelo Após Execução** com **Depósito em Conta**.
-    - Não é permitido usar parcelamento em alguns casos, e a forma de pagamento deve ser sempre **Depósito em Conta**.
-    - Se houver dúvidas sobre fontes específicas, consulte a fonte financiadora diretamente.
     """
 
 # Função para verificar se a pergunta é sobre formas de pagamento
