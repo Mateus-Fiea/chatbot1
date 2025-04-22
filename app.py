@@ -27,6 +27,10 @@ def encontrar_resposta(pergunta_usuario):
             todas_chaves.append(chave)
             mapa_respostas[chave] = resposta
 
+    # Se a pergunta for sobre forma de pagamento
+    if verificar_pagamento(pergunta_usuario.lower()):
+        return obter_informacoes_pagamento(pergunta_usuario)
+
     # Encontrar a melhor correspondência usando fuzzy matching
     melhor, score = process.extractOne(pergunta_usuario.lower(), todas_chaves, scorer=fuzz.partial_ratio)
 
@@ -40,6 +44,55 @@ def encontrar_resposta(pergunta_usuario):
             sugestao_txt = "\n".join([f"- {s}" for s in sugestões])
             return f"🤔 Não encontrei resposta exata, mas talvez você quis dizer:\n\n{suggestao_txt}"
         return "❌ Ainda não sei responder essa pergunta. Tente outra pergunta ou fale com o Mateus!"
+
+# Função para verificar se a pergunta é sobre formas de pagamento
+def verificar_pagamento(pergunta_usuario):
+    palavras_chave = ["boleto", "cartão de crédito", "cartão de débito", "depósito em conta", "pix", "transferência"]
+    for palavra in palavras_chave:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para retornar informações sobre formas de pagamento
+def obter_informacoes_pagamento(pergunta_usuario):
+    formas_pagamento = {
+        "boleto": """
+        🔹 **Boleto Bancário**:
+        - Permitido para: todos os modelos de gestão.
+        - Forma de pagamento única ou parcelada.
+        """,
+        
+        "depósito em conta": """
+        🔹 **Depósito em Conta**:
+        - Permitido para: Modelos Após Execução (quando tiver fonte financiadora) e Aprendizagem Gratuita em Após Assinatura.
+        - Não aceita parcelamento.
+        - Permitido em: Fontes Pagadoras como Senai DR/DF, SEBRAE-AL, etc.
+        """,
+
+        "cartão de crédito": """
+        🔹 **Cartão de Crédito**:
+        - Permitido para: Modelo Após Assinatura e Após Pagamento.
+        - Não permitido para: Pagamentos em modelos como Após Execução ou Mensal.
+        """,
+
+        "cartão de débito": """
+        🔹 **Cartão de Débito**:
+        - Permitido apenas para: Modelos Após Assinatura e Após Pagamento.
+        - Usado para pagamento único ou parcelado, conforme o modelo de gestão.
+        - Não permitido para: Pagamento no modelo Após Execução e Mensal.
+        """,
+     
+    }
+
+    respostas = []
+    for pagamento, descricao in formas_pagamento.items():
+        if fuzz.partial_ratio(pergunta_usuario, pagamento) > 80:
+            respostas.append(descricao)
+
+    if respostas:
+        return "\n".join(respostas)
+    else:
+        return "❌ Não encontrei informações sobre essa forma de pagamento. Tente outra forma ou fale com o Mateus!"
 
 # Quando o usuário digita a pergunta, tenta encontrar a resposta
 if pergunta:
@@ -58,3 +111,4 @@ if st.session_state.historico:
     with st.expander("📜 Ver histórico"):
         for h in reversed(st.session_state.historico[-5:]):
             st.markdown(f"• {h}")
+
