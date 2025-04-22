@@ -38,15 +38,12 @@ def encontrar_resposta(pergunta_usuario):
         if sugestões:
             sugestao_txt = "\n".join([f"- {s}" for s in sugestões])
             return f"🤔 Não encontrei resposta exata, mas talvez você quis dizer:\n\n{suggestao_txt}"
-        return None
+        return "❌ Ainda não sei responder essa pergunta. Tente outra pergunta ou fale com o Mateus!"
 
 # Quando o usuário digita a pergunta, tenta encontrar a resposta
 if pergunta:
     resposta = encontrar_resposta(pergunta)
-    if resposta:
-        st.success(resposta)
-    else:
-        st.error("❌ Ainda não sei responder essa pergunta. Tente uma pergunta diferente!")
+    st.write(resposta)
 
 # Gerenciar o histórico de perguntas
 if "historico" not in st.session_state:
