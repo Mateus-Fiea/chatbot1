@@ -15,56 +15,47 @@ base_conhecimento = carregar_base()
 
 pergunta = st.text_input("Sua dúvida:")
 
+# Função para encontrar a resposta com base na pergunta do usuário
 def encontrar_resposta(pergunta_usuario):
     todas_chaves = []
     mapa_respostas = {}
-    palavras_chave = []
 
-    # Adicionando as perguntas e respostas ao mapa
+    # Preenche as chaves e respostas a partir da base de conhecimento
     for categoria, perguntas in base_conhecimento.items():
         for chave, resposta in perguntas.items():
             todas_chaves.append(chave)
             mapa_respostas[chave] = resposta
-            # Adiciona palavras-chave ao nosso filtro
-            palavras_chave.extend(chave.lower().split())
 
-    # Verificação de correspondência exata ou alta similaridade
-    melhor, score = process.extractOne(pergunta_usuario.lower(), todas_chaves, scorer=fuzz.token_sort_ratio)
+    # Encontrar a melhor correspondência usando fuzzy matching
+    melhor, score = process.extractOne(pergunta_usuario.lower(), todas_chaves, scorer=fuzz.partial_ratio)
 
+    # Se a correspondência for boa (score >= 70), retorna a resposta
     if score >= 70:
         return mapa_respostas[melhor]
     else:
-        # Sugestões baseadas em similaridade
-        sugestoes = [m for m, s in process.extract(pergunta_usuario.lower(), todas_chaves, limit=3) if s >= 50]
-        if sugestoes:
-            sugestao_txt = "\n".join([f"- {s}" for s in sugestoes])
+        # Caso contrário, sugere possíveis perguntas que podem ser o que o usuário quis dizer
+        sugestões = [m for m, s in process.extract(pergunta_usuario.lower(), todas_chaves, limit=3) if s >= 50]
+        if sugestões:
+            sugestao_txt = "\n".join([f"- {s}" for s in sugestões])
             return f"🤔 Não encontrei resposta exata, mas talvez você quis dizer:\n\n{suggestao_txt}"
+        return None
 
-        # Se não encontrar sugestão, tenta verificar palavras-chave relacionadas
-        palavras_usuario = pergunta_usuario.lower().split()
-        palavras_encontradas = [p for p in palavras_usuario if p in palavras_chave]
-
-        if palavras_encontradas:
-            # Sugerir perguntas baseadas nas palavras-chave encontradas
-            sugestao_txt = "\n".join([f"- {s}" for s in palavras_encontradas])
-            return f"🤔 Não encontrei resposta exata, mas com base nas palavras-chave, talvez você quis dizer:\n\n{suggestao_txt}"
-
-        # Caso não consiga encontrar nenhuma correspondência ou sugestão
-        return "🤔 Não encontrei uma resposta exata, mas aqui estão algumas sugestões que podem ser úteis."
-
+# Quando o usuário digita a pergunta, tenta encontrar a resposta
 if pergunta:
     resposta = encontrar_resposta(pergunta)
     if resposta:
         st.success(resposta)
     else:
-        st.warning("🤔 Não encontrei uma resposta exata, mas estou sugerindo algo. Tente novamente.")
+        st.error("❌ Ainda não sei responder essa pergunta. Tente uma pergunta diferente!")
 
+# Gerenciar o histórico de perguntas
 if "historico" not in st.session_state:
     st.session_state.historico = []
 
 if pergunta:
     st.session_state.historico.append(pergunta)
 
+# Exibe o histórico de perguntas
 if st.session_state.historico:
     with st.expander("📜 Ver histórico"):
         for h in reversed(st.session_state.historico[-5:]):
