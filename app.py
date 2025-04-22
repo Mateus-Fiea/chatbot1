@@ -27,13 +27,13 @@ def encontrar_resposta(pergunta_usuario):
             todas_chaves.append(chave)
             mapa_respostas[chave] = resposta
 
-    # Se a pergunta for sobre forma de pagamento
-    if verificar_pagamento(pergunta_usuario.lower()):
-        return obter_informacoes_pagamento(pergunta_usuario)
-
     # Se a pergunta for sobre fonte financiadora
     if verificar_fonte_financiadora(pergunta_usuario.lower()):
         return obter_informacoes_fonte_financiadora()
+
+    # Se a pergunta for sobre forma de pagamento
+    if verificar_pagamento(pergunta_usuario.lower()):
+        return obter_informacoes_pagamento(pergunta_usuario)
 
     # Encontrar a melhor correspondência usando fuzzy matching
     melhor, score = process.extractOne(pergunta_usuario.lower(), todas_chaves, scorer=fuzz.partial_ratio)
@@ -51,7 +51,7 @@ def encontrar_resposta(pergunta_usuario):
 
 # Função para verificar se a pergunta é sobre fontes financiadoras
 def verificar_fonte_financiadora(pergunta_usuario):
-    fontes_financiadoras = ["senai", "sebrae", "abdi", "sebrae al", "senai dr/df"]
+    fontes_financiadoras = ["fonte financiadora", "sebrae", "senai", "abdi", "sebrae al", "senai dr/df"]
     for fonte in fontes_financiadoras:
         if fuzz.partial_ratio(pergunta_usuario, fonte) > 80:
             return True
@@ -62,6 +62,8 @@ def obter_informacoes_fonte_financiadora():
     return """
     🔹 **Fonte Financiadora**:
     - Para **fontes financiadoras** como **SEBRAE**, **SENAI**, **ABDI**, etc., deve-se utilizar o **modelo Após Execução** com **Depósito em Conta**.
+    - Não é permitido usar parcelamento em alguns casos, e a forma de pagamento deve ser sempre **Depósito em Conta**.
+    - Se houver dúvidas sobre fontes específicas, consulte a fonte financiadora diretamente.
     """
 
 # Função para verificar se a pergunta é sobre formas de pagamento
