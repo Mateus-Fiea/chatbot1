@@ -31,6 +31,10 @@ def encontrar_resposta(pergunta_usuario):
     if verificar_pagamento(pergunta_usuario.lower()):
         return obter_informacoes_pagamento(pergunta_usuario)
 
+    # Se a pergunta for sobre fonte financiadora
+    if verificar_fonte_financiadora(pergunta_usuario.lower()):
+        return obter_informacoes_fonte_financiadora()
+
     # Encontrar a melhor correspondência usando fuzzy matching
     melhor, score = process.extractOne(pergunta_usuario.lower(), todas_chaves, scorer=fuzz.partial_ratio)
 
@@ -44,6 +48,21 @@ def encontrar_resposta(pergunta_usuario):
             sugestao_txt = "\n".join([f"- {s}" for s in sugestões])
             return f"🤔 Não encontrei resposta exata, mas talvez você quis dizer:\n\n{suggestao_txt}"
         return "❌ Ainda não sei responder essa pergunta. Tente outra pergunta ou fale com o Mateus!"
+
+# Função para verificar se a pergunta é sobre fontes financiadoras
+def verificar_fonte_financiadora(pergunta_usuario):
+    fontes_financiadoras = ["senai", "sebrae", "abdi", "sebrae al", "senai dr/df"]
+    for fonte in fontes_financiadoras:
+        if fuzz.partial_ratio(pergunta_usuario, fonte) > 80:
+            return True
+    return False
+
+# Função para retornar informações gerais sobre fontes financiadoras
+def obter_informacoes_fonte_financiadora():
+    return """
+    🔹 **Fonte Financiadora**:
+    - Para **fontes financiadoras** como **SEBRAE**, **SENAI**, **ABDI**, etc., deve-se utilizar o **modelo Após Execução** com **Depósito em Conta**.
+    """
 
 # Função para verificar se a pergunta é sobre formas de pagamento
 def verificar_pagamento(pergunta_usuario):
