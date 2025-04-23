@@ -13,7 +13,7 @@
     "como criar um negócio no moskit": "🔹 Criar negócio:\n- Vá em 'Novo Negócio'\n- Preencha nome, etapa, empresa, contato e produto",
     "funil (etapas) do moskit": "🔹 Funil do Moskit:\n1. Base Geral\n2. Cliente Potencial\n3. Lead Qualificado\n4. Oportunidade\n5. Reunião\n6. Elaborar Proposta",
     "id da empresa moskit": "🔹 ID da empresa:\n- Para gerar link no 360, o contato precisa estar vinculado corretamente à empresa",
-    "link": "🔹 Não gerou link:\n- Para gerar link no 360, o contato precisa estar vinculado corretamente à empresa. Caso esteja tudo certo e ainda sim não gerou link, abra chamado no IDigital para a Inteligência Comercial verificar",
+    "link, não gerou link": "🔹 Não gerou link:\n- Para gerar link no 360, o contato precisa estar vinculado corretamente à empresa. Caso esteja tudo certo e ainda sim não gerou link, abra chamado no IDigital para a Inteligência Comercial verificar",
     "empresa não aparece no moskit": "🔹 Empresa não aparece?\n- Verifique CNPJ válido e ativação pelo Observatório"
   },
   "Sistema 360": {
