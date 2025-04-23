@@ -8,29 +8,29 @@
     "aprendizagem gratuita": "🔹 **Aprendizagem Gratuita**:\n- Após Assinatura + Depósito em Conta\n- ❌ Não pode usar boleto, cartão ou outros modelos"
   },
   "Moskit": {
-    "como cadastrar empresa no moskit": "🔹 Cadastro no Moskit:\n- Crie um negócio\n- Vincule a empresa\n- Vincule o contato\n- Ative via Observatório",
+    "como cadastrar empresa no moskit": "🔹 Cadastro no Moskit:\n- Crie um novo negócio e cadastre a empresa\n- Vincule a empresa ao negócio, após o cadastro\n- Vincule um contato à empresa\n- Coloque o negócio na fase de Cliente Potencial e aguarde a ativação",
     "como criar um negócio no moskit": "🔹 Criar negócio:\n- Vá em 'Novo Negócio'\n- Preencha nome, etapa, empresa, contato e produto",
-    "como cadastrar no moskit": "🔹 Cadastro no Moskit:\n- Siga as etapas descritas para cadastrar a empresa e o contato.",
-    "funil do moskit": "🔹 Funil do Moskit:\n1. Base Geral\n2. Cliente Potencial\n3. Lead Qualificado\n4. Oportunidade\n5. Reunião\n6. Elaborar Proposta",
+    "funil (etapas) do moskit": "🔹 Funil do Moskit:\n1. Base Geral\n2. Cliente Potencial\n3. Lead Qualificado\n4. Oportunidade\n5. Reunião\n6. Elaborar Proposta",
     "id da empresa moskit": "🔹 ID da empresa:\n- Para gerar link no 360, o contato precisa estar vinculado corretamente à empresa",
+    "link": "🔹 Não gerou link:\n- Para gerar link no 360, o contato precisa estar vinculado corretamente à empresa. Caso esteja tudo certo e ainda sim não gerou link, abra chamado no IDigital para a Inteligência Comercial verificar",
     "empresa não aparece no moskit": "🔹 Empresa não aparece?\n- Verifique CNPJ válido e ativação pelo Observatório"
   },
   "Sistema 360": {
     "como preencher proposta no 360": "🔹 Etapas obrigatórias:\n1. Informações (forma de pagamento, tipo de proposta, template)\n2. Contato\n3. Produto\n4. Parcelas",
     "diagnóstico no 360": "🔹 Diagnóstico:\n- Usado quando precisa ajustar produto, valor, carga horária\n- Movido ao setor de Negócios",
-    "combo sst no 360": "🔹 Combo SST:\n- Inclui: PGR, PCMSO, E-social, S+, Laudos\n- Modelo: Mensal\n- Prazo: 24 meses\n- ❗ Sem E-social = não é Combo",
+    "combo sst no 360": "🔹 Combo SST:\n- Inclui: PCMSO, E-SOCIAL, S+, LAUDO DE INSALUBRIDADE, LAUDO DE PERICULOSIDADE, PGR, LTCAT E PRODUTOS EXTRAS (PAE E ANÁLISE DE VULNERABILIDADE)\n- Modelo: Mensal\n- Prazo: 12 à 24 meses\n- ❗ Sem todos os produtos obrigatórios juntos = não é Combo",
     "unidade executora 360": "🔹 Unidade Executora:\n- Preencher quando quem executa é diferente da unidade comercial\n- Evita erros no sistema",
     "aba produto não aparece": "🔹 Aba Produto:\n- Falta preenchimento: forma de pagamento, tipo de proposta, template ou tabela de preço"
   },
   "Regras Específicas": {
-    "modelo para sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura\n- ❌ Qualquer outro modelo é incorreto",
-    "contrato sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura\n- ❌ Qualquer outro modelo é incorreto",
-    "modelo contrato sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura\n- ❌ Qualquer outro modelo é incorreto",
-    "sebrae modelo correto": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura\n- ❌ Qualquer outro modelo é incorreto",
-    "modelo de contrato sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura\n- ❌ Qualquer outro modelo é incorreto",
+    "modelo para sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura, parcelas até 10 vezes, com valor mínimo de R$ 50 (boleto ou cartão de crédito)\n- ❌ Qualquer outro modelo é incorreto",
+    "contrato sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura, parcelas até 10 vezes, com valor mínimo de R$ 50 (boleto ou cartão de crédito)\n- ❌ Qualquer outro modelo é incorreto",
+    "modelo contrato sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura, parcelas até 10 vezes, com valor mínimo de R$ 50 (boleto ou cartão de crédito)\n- ❌ Qualquer outro modelo é incorreto",
+    "sebrae modelo correto": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura, parcelas até 10 vezes, com valor mínimo de R$ 50 (boleto ou cartão de crédito)\n- ❌ Qualquer outro modelo é incorreto",
+    "modelo de contrato sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura, parcelas até 10 vezes, com valor mínimo de R$ 50 (boleto ou cartão de crédito)\n- ❌ Qualquer outro modelo é incorreto",
     "faturamento sob demanda senai/al": "🔹 SENAI/AL + Faturamento Sob Demanda:\n- ❌ Não é permitido\n- ✅ Apenas Metrologia com Após Execução",
-    "fontes pagadoras abdi sebrae al b+p senai dr/df": "🔹 Fontes: DR/DF, ABDI, SEBRAE-AL, B+P\n- Devem usar Após Execução + Depósito em Conta\n- ❌ Sem boleto ou cartão",
+    "fontes pagadoras abdi sebrae al b+p senai dr/df": "🔹 Fontes: Procompi, ABDI, B+P\n- Devem usar Após Execução + Depósito em Conta\n- ❌ Sem boleto ou cartão",
     "sem produto": "🔴 Erro:Proposta sem produto.\n- Corrigir adicionando produto válido",
-    "locação de espaços": "🔹 Locação:\n- Modelo: Após Pagamento\n- ❌ Não usar Mensal, Execução ou Assinatura"
+    "locação de espaços": "🔹 Locação:\n- Modelo: Após Pagamento\n- ❌ Não usar Mensal, Após Execução ou Após Assinatura"
   }
 }

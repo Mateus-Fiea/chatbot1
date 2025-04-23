@@ -51,7 +51,7 @@ def encontrar_resposta(pergunta_usuario):
 
 # Função para verificar se a pergunta é sobre fontes financiadoras
 def verificar_fonte_financiadora(pergunta_usuario):
-    fontes_financiadoras = ["fonte financiadora", "sebrae", "senai", "abdi", "sebrae al", "senai dr/df"]
+    fontes_financiadoras = ["fonte financiadora", "B + P", "Procompi", "ABDI"]
     for fonte in fontes_financiadoras:
         if fuzz.partial_ratio(pergunta_usuario, fonte) > 80:
             return True
@@ -61,7 +61,7 @@ def verificar_fonte_financiadora(pergunta_usuario):
 def obter_informacoes_fonte_financiadora():
     return """
     🔹 **Fonte Financiadora**:
-    - Para **fontes financiadoras** como **SEBRAE**, **SENAI**, **ABDI**, etc., deve-se utilizar o **modelo Após Execução** com **Depósito em Conta**.
+    - Para **fontes financiadoras** como **Procompi**, **B + P**, **ABDI**, etc., deve-se utilizar o **modelo Após Execução** com **Depósito em Conta**.
     """
 
 # Função para verificar se a pergunta é sobre formas de pagamento
