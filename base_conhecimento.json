@@ -18,6 +18,8 @@
   },
   "Sistema 360": {
     "como preencher proposta no 360": "🔹 Etapas obrigatórias:\n1. Informações (forma de pagamento, tipo de proposta, template)\n2. Contato\n3. Produto\n4. Parcelas",
+    "Tipo de proposta (porte)": "🔹 Pelo número de funcionários:\n- Micro\n- Pequena\n- Média\n- Grande\n- Órgãoes Públicos ",
+    "Tabela de Preço": "🔹 Conforme o CNAE da empresa:\n- Indústria\n- Não Indústria\n- Indústria Sindicalizada\n- LifeOne (para serviços de saúde ocupacional)",
     "diagnóstico no 360": "🔹 Diagnóstico:\n- Usado quando precisa ajustar produto, valor, carga horária\n- Movido ao setor de Negócios",
     "combo sst no 360": "🔹 Combo SST:\n- Inclui: PCMSO, E-SOCIAL, S+, LAUDO DE INSALUBRIDADE, LAUDO DE PERICULOSIDADE, PGR, LTCAT E PRODUTOS EXTRAS (PAE E ANÁLISE DE VULNERABILIDADE)\n- Modelo: Mensal\n- Parcelas: 12 à 24 meses\n- ❗ Sem todos os produtos obrigatórios juntos = não é Combo",
     "unidade executora 360": "🔹 Unidade Executora:\n- Preencher quando quem executa é diferente da unidade comercial\n- Evita erros no sistema",
