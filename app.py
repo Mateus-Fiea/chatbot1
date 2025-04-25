@@ -59,10 +59,6 @@ def encontrar_resposta(pergunta_usuario):
     if verificar_diagnostico(pergunta_usuario.lower()):
         return mapa_respostas["diagnóstico no 360"]
 
-    # Verificar se a pergunta é sobre "forma de pagamento"
-    if verificar_forma_pagamento(pergunta_usuario.lower()):
-        return mapa_respostas["forma de pagamento"]
-
     # Verificar se a pergunta é sobre "combo"
     if verificar_combo(pergunta_usuario.lower()):
         return mapa_respostas["combo sst no 360"]
@@ -78,6 +74,10 @@ def encontrar_resposta(pergunta_usuario):
     # Verificar se a pergunta é sobre "sebrae"
     if verificar_sebrae(pergunta_usuario.lower()):
         return mapa_respostas["sebrae"]
+    
+    # Verificar se a pergunta é sobre "forma de pagamento"
+    if verificar_forma_pagamento(pergunta_usuario.lower()):
+        return mapa_respostas["forma de pagamento"]
 
     # Verificar se a pergunta é sobre "link"
     if verificar_link(pergunta_usuario.lower()):
@@ -168,14 +168,6 @@ def verificar_id_empresa_moskit(pergunta_usuario):
             return True
     return False
 
-# Função para verificar se a pergunta é sobre "forma de pagamento"
-def verificar_forma_pagamento(pergunta_usuario):
-    palavras_chave_pagamento = ["forma de pagamento", "pagamento"]
-    for palavra in palavras_chave_pagamento:
-        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
-            return True
-    return False
-
 # Função para verificar "360"
 def verificar_360(pergunta_usuario):
     palavras_chave_360 = ["360"]
@@ -240,41 +232,13 @@ def verificar_sebrae(pergunta_usuario):
             return True
     return False
 
-# Função para retornar informações sobre formas de pagamento
-def obter_informacoes_pagamento(pergunta_usuario):
-    formas_pagamento = {
-        "boleto": """
-        🔹 **Boleto Bancário**:
-        - Permitido para: todos os modelos de gestão.
-        - Forma de pagamento única ou parcelada.
-        """,
-        
-        "depósito em conta": """
-        🔹 **Depósito em Conta**:
-        - Permitido para: Modelos Após Execução (quando tiver fonte financiadora) e Aprendizagem Gratuita em Após Assinatura.
-        - Não aceita parcelamento.
-        - Permitido em: Fontes Pagadoras como Senai DR/DF, SEBRAE-AL, etc.
-        """,
-
-        "cartão de crédito": """
-        🔹 **Cartão de Crédito**:
-        - Permitido para: Modelo Após Assinatura e Após Pagamento.
-        - Não permitido para: Pagamentos em modelos como Após Execução ou Mensal.
-        """,
-
-        "cartão de débito": """
-        🔹 **Cartão de Débito**:
-        - Permitido apenas para: Modelos Após Assinatura e Após Pagamento.
-        - Usado para pagamento único ou parcelado, conforme o modelo de gestão.
-        - Não permitido para: Pagamento no modelo Após Execução e Mensal.
-        """,
-     
-    }
-
-    respostas = []
-    for pagamento, descricao in formas_pagamento.items():
-        if fuzz.partial_ratio(pergunta_usuario, pagamento) > 80:
-            respostas.append(descricao)
+# Função para verificar se a pergunta é sobre "forma de pagamento"
+def verificar_forma_pagamento(pergunta_usuario):
+    palavras_chave_pagamento = ["forma de pagamento", "pagamento"]
+    for palavra in palavras_chave_pagamento:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
 
     if respostas:
         return "\n".join(respostas)
