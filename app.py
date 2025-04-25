@@ -27,11 +27,13 @@ def encontrar_resposta(pergunta_usuario):
             todas_chaves.append(chave)
             mapa_respostas[chave] = resposta
 
+    # Verificar se a pergunta é sobre "modelo"
+    if verificar_modelo(pergunta_usuario.lower()):
+        return mapa_respostas["modelo de gestão"]  # Resposta para "Modelos de Gestão"
+
     # Verificar se a pergunta é sobre "cadastrar empresa no Moskit"
     if verificar_cadastrar_empresa_moskit(pergunta_usuario.lower()):
         return mapa_respostas["cadastrar empresa no moskit"]
-
-    
 
     # Verificar se a pergunta é sobre "link"
     if verificar_link(pergunta_usuario.lower()):
@@ -58,6 +60,7 @@ def encontrar_resposta(pergunta_usuario):
             sugestao_txt = "\n".join([f"- {s}" for s in sugestões])
             return f"🤔 Não encontrei resposta exata, mas talvez você quis dizer:\n\n{suggestao_txt}"
         return "❌ Ainda não sei responder essa pergunta. Tente outra pergunta ou fale com o Mateus!"
+
 
 # Função para verificar se a pergunta é sobre "modelo"
 def verificar_modelo(pergunta_usuario):
