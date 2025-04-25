@@ -35,6 +35,46 @@ def encontrar_resposta(pergunta_usuario):
     if verificar_cadastrar_empresa_moskit(pergunta_usuario.lower()):
         return mapa_respostas["cadastrar empresa no moskit"]
 
+    # Verificar se a pergunta é sobre "funil" ou "etapas"
+    if verificar_funil_etapas(pergunta_usuario.lower()):
+        return mapa_respostas["funil (etapas) do moskit"]
+
+    # Verificar se a pergunta é sobre "ID" da empresa
+    if verificar_id_empresa_moskit(pergunta_usuario.lower()):
+        return mapa_respostas["id da empresa moskit"]
+
+    # Verificar se a pergunta é sobre "360"
+    if verificar_360(pergunta_usuario.lower()):
+        return mapa_respostas["Sistema 360"]
+
+    # Verificar se a pergunta é sobre "proposta no 360"
+    if verificar_proposta_360(pergunta_usuario.lower()):
+        return mapa_respostas["como preencher proposta no 360"]
+
+    # Verificar se a pergunta é sobre "tipo de proposta"
+    if verificar_tipo_proposta(pergunta_usuario.lower()):
+        return mapa_respostas["Tipo de proposta (porte)"]
+
+    # Verificar se a pergunta é sobre "diagnóstico"
+    if verificar_diagnostico(pergunta_usuario.lower()):
+        return mapa_respostas["diagnóstico no 360"]
+
+    # Verificar se a pergunta é sobre "combo"
+    if verificar_combo(pergunta_usuario.lower()):
+        return mapa_respostas["combo sst no 360"]
+
+    # Verificar se a pergunta é sobre "unidade executora"
+    if verificar_unidade_executora(pergunta_usuario.lower()):
+        return mapa_respostas["unidade executora 360"]
+
+    # Verificar se a pergunta é sobre "aba produto"
+    if verificar_aba_produto(pergunta_usuario.lower()):
+        return mapa_respostas["aba produto não aparece"]
+
+    # Verificar se a pergunta é sobre "sebrae"
+    if verificar_sebrae(pergunta_usuario.lower()):
+        return mapa_respostas["sebrae"]
+
     # Verificar se a pergunta é sobre "link"
     if verificar_link(pergunta_usuario.lower()):
         return mapa_respostas["link, não gerou link"]
@@ -104,6 +144,86 @@ def obter_informacoes_fonte_financiadora():
 def verificar_pagamento(pergunta_usuario):
     palavras_chave = ["boleto", "cartão de crédito", "cartão de débito", "depósito em conta", "pix", "transferência"]
     for palavra in palavras_chave:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "funil" ou "etapas" no Moskit
+def verificar_funil_etapas(pergunta_usuario):
+    palavras_chave_funil_etapas = ["etapas", "funil"]
+    for palavra in palavras_chave_funil_etapas:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "ID" da empresa no Moskit
+def verificar_id_empresa_moskit(pergunta_usuario):
+    palavras_chave_id = ["id"]
+    for palavra in palavras_chave_id:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "360"
+def verificar_360(pergunta_usuario):
+    palavras_chave_360 = ["360"]
+    for palavra in palavras_chave_360:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "proposta no 360"
+def verificar_proposta_360(pergunta_usuario):
+    palavras_chave_proposta_360 = ["proposta no 360"]
+    for palavra in palavras_chave_proposta_360:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "Tipo de proposta"
+def verificar_tipo_proposta(pergunta_usuario):
+    palavras_chave_tipo_proposta = ["tipo de proposta", "porte"]
+    for palavra in palavras_chave_tipo_proposta:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "diagnóstico"
+def verificar_diagnostico(pergunta_usuario):
+    palavras_chave_diagnostico = ["diagnóstico"]
+    for palavra in palavras_chave_diagnostico:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "combo"
+def verificar_combo(pergunta_usuario):
+    palavras_chave_combo = ["combo"]
+    for palavra in palavras_chave_combo:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "unidade executora"
+def verificar_unidade_executora(pergunta_usuario):
+    palavras_chave_unidade_executora = ["unidade executora"]
+    for palavra in palavras_chave_unidade_executora:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "aba produto"
+def verificar_aba_produto(pergunta_usuario):
+    palavras_chave_aba_produto = ["aba produto", "aba do produto"]
+    for palavra in palavras_chave_aba_produto:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar "sebrae"
+def verificar_sebrae(pergunta_usuario):
+    palavras_chave_sebrae = ["sebrae"]
+    for palavra in palavras_chave_sebrae:
         if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
             return True
     return False
