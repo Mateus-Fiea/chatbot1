@@ -214,7 +214,7 @@ def verificar_unidade_executora(pergunta_usuario):
 
 # Função para verificar "aba produto"
 def verificar_aba_produto(pergunta_usuario):
-    palavras_chave_aba_produto = ["aba produto", "aba do produto"]
+    palavras_chave_aba_produto = ["aba produto", "aba do produto", "produto"]
     for palavra in palavras_chave_aba_produto:
         if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
             return True
