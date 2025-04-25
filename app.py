@@ -27,11 +27,19 @@ def encontrar_resposta(pergunta_usuario):
             todas_chaves.append(chave)
             mapa_respostas[chave] = resposta
 
-    # Se a pergunta for sobre fonte financiadora
+    # Verificar se a pergunta é sobre "cadastrar empresa no Moskit"
+    if verificar_cadastrar_empresa_moskit(pergunta_usuario.lower()):
+        return mapa_respostas["cadastrar empresa no moskit"]
+
+    # Verificar se a pergunta é sobre "link"
+    if verificar_link(pergunta_usuario.lower()):
+        return mapa_respostas["link, não gerou link"]
+
+    # Verificar se a pergunta é sobre fontes financiadoras
     if verificar_fonte_financiadora(pergunta_usuario.lower()):
         return obter_informacoes_fonte_financiadora()
 
-    # Se a pergunta for sobre forma de pagamento
+    # Verificar se a pergunta é sobre formas de pagamento
     if verificar_pagamento(pergunta_usuario.lower()):
         return obter_informacoes_pagamento(pergunta_usuario)
 
@@ -48,6 +56,19 @@ def encontrar_resposta(pergunta_usuario):
             sugestao_txt = "\n".join([f"- {s}" for s in sugestões])
             return f"🤔 Não encontrei resposta exata, mas talvez você quis dizer:\n\n{suggestao_txt}"
         return "❌ Ainda não sei responder essa pergunta. Tente outra pergunta ou fale com o Mateus!"
+
+# Função para verificar se a pergunta é sobre "cadastrar empresa no Moskit"
+def verificar_cadastrar_empresa_moskit(pergunta_usuario):
+    palavras_chave_cadastro = [
+        "cadastrar empresa no moskit", 
+        "cadastro de empresa no moskit", 
+        "incluir empresa no moskit"
+    ]
+    
+    for palavra in palavras_chave_cadastro:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
 
 # Função para verificar se a pergunta é sobre fontes financiadoras
 def verificar_fonte_financiadora(pergunta_usuario):
@@ -113,6 +134,15 @@ def obter_informacoes_pagamento(pergunta_usuario):
     else:
         return "❌ Não encontrei informações sobre essa forma de pagamento. Tente outra forma ou fale com o Mateus!"
 
+# Função para verificar se a pergunta é sobre link
+def verificar_link(pergunta_usuario):
+    palavras_chave_link = ["link"]
+    
+    for palavra in palavras_chave_link:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
 # Quando o usuário digita a pergunta, tenta encontrar a resposta
 if pergunta:
     resposta = encontrar_resposta(pergunta)
@@ -130,4 +160,3 @@ if st.session_state.historico:
     with st.expander("📜 Ver histórico"):
         for h in reversed(st.session_state.historico[-5:]):
             st.markdown(f"• {h}")
-
