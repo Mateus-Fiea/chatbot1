@@ -59,6 +59,10 @@ def encontrar_resposta(pergunta_usuario):
     if verificar_diagnostico(pergunta_usuario.lower()):
         return mapa_respostas["diagnóstico no 360"]
 
+    # Verificar se a pergunta é sobre "forma de pagamento"
+    if verificar_forma_pagamento(pergunta_usuario.lower()):
+        return mapa_respostas["forma de pagamento"]
+
     # Verificar se a pergunta é sobre "combo"
     if verificar_combo(pergunta_usuario.lower()):
         return mapa_respostas["combo sst no 360"]
@@ -160,6 +164,14 @@ def verificar_funil_etapas(pergunta_usuario):
 def verificar_id_empresa_moskit(pergunta_usuario):
     palavras_chave_id = ["id"]
     for palavra in palavras_chave_id:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+# Função para verificar se a pergunta é sobre "forma de pagamento"
+def verificar_forma_pagamento(pergunta_usuario):
+    palavras_chave_pagamento = ["forma de pagamento", "pagamento"]
+    for palavra in palavras_chave_pagamento:
         if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
             return True
     return False

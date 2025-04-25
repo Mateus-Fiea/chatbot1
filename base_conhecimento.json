@@ -24,6 +24,7 @@
     "combo sst no 360": "🔹 Combo SST:\n- Inclui: PCMSO, E-SOCIAL, S+, LAUDO DE INSALUBRIDADE, LAUDO DE PERICULOSIDADE, PGR, LTCAT E PRODUTOS EXTRAS (PAE E ANÁLISE DE VULNERABILIDADE)\n- Modelo: Mensal\n- Parcelas: 12 à 24 meses\n- ❗ Sem todos os produtos obrigatórios juntos = não é Combo",
     "unidade executora 360": "🔹 Unidade Executora:\n- Preencher quando quem executa é diferente da unidade comercial\n- Evita erros no sistema",
     "aba produto não aparece": "🔹 Aba Produto:\n- Falta preenchimento: forma de pagamento, tipo de proposta, template ou tabela de preço"
+    "forma de pagamento": "🔹 forma de pagamento:\n- Boleto\n- Cartão de crédito\n- Cartão de débito\n- Depósito em conta"
   },
   "Regras Específicas": {
     "sebrae": "🔹 Sebrae:\n- Modelo obrigatório: Após Assinatura, parcelas até 10 vezes, com valor mínimo de R$ 50 (boleto ou cartão de crédito)\n- ❌ Qualquer outro modelo é incorreto",
