@@ -174,7 +174,7 @@ def verificar_360(pergunta_usuario):
 
 # Função para verificar "proposta no 360"
 def verificar_proposta_360(pergunta_usuario):
-    palavras_chave_proposta_360 = ["proposta no 360"]
+    palavras_chave_proposta_360 = ["proposta no 360", "a proposta", "proposta"]
     for palavra in palavras_chave_proposta_360:
         if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
             return True
