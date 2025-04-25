@@ -31,6 +31,8 @@ def encontrar_resposta(pergunta_usuario):
     if verificar_cadastrar_empresa_moskit(pergunta_usuario.lower()):
         return mapa_respostas["cadastrar empresa no moskit"]
 
+    
+
     # Verificar se a pergunta é sobre "link"
     if verificar_link(pergunta_usuario.lower()):
         return mapa_respostas["link, não gerou link"]
@@ -57,10 +59,20 @@ def encontrar_resposta(pergunta_usuario):
             return f"🤔 Não encontrei resposta exata, mas talvez você quis dizer:\n\n{suggestao_txt}"
         return "❌ Ainda não sei responder essa pergunta. Tente outra pergunta ou fale com o Mateus!"
 
+# Função para verificar se a pergunta é sobre "modelo"
+def verificar_modelo(pergunta_usuario):
+    palavra_chave_modelo = "modelo"
+    
+    # Verificar se a palavra "modelo" está na pergunta
+    if fuzz.partial_ratio(pergunta_usuario, palavra_chave_modelo) > 80:
+        return True
+    return False
+
 # Função para verificar se a pergunta é sobre "cadastrar empresa no Moskit"
 def verificar_cadastrar_empresa_moskit(pergunta_usuario):
     palavras_chave_cadastro = [
         "cadastrar empresa no moskit", 
+        "cadastrar", 
         "cadastro de empresa no moskit", 
         "incluir empresa no moskit"
     ]
@@ -134,7 +146,7 @@ def obter_informacoes_pagamento(pergunta_usuario):
     else:
         return "❌ Não encontrei informações sobre essa forma de pagamento. Tente outra forma ou fale com o Mateus!"
 
-# Função para verificar se a pergunta é sobre link
+# Função para verificar se a pergunta é sobre "link"
 def verificar_link(pergunta_usuario):
     palavras_chave_link = ["link"]
     
