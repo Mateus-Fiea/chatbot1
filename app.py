@@ -284,11 +284,6 @@ def verificar_forma_pagamento(pergunta_usuario):
             return True
     return False
 
-    if respostas:
-        return "\n".join(respostas)
-    else:
-        return "❌ Não encontrei informações sobre essa forma de pagamento. Tente outra forma ou fale com o Mateus!"
-
 # Função para verificar se a pergunta é sobre "link"
 def verificar_link(pergunta_usuario):
     palavras_chave_link = ["link"]
