@@ -105,7 +105,7 @@ def encontrar_resposta(pergunta_usuario):
 
     # Verificar se a pergunta é sobre formas de pagamento
     if verificar_pagamento(pergunta_usuario.lower()):
-        return obter_informacoes_pagamento(pergunta_usuario)
+        return obter_informacoes_pagamento()
 
     # Encontrar a melhor correspondência usando fuzzy matching
     melhor, score = process.extractOne(pergunta_usuario.lower(), todas_chaves, scorer=fuzz.partial_ratio)
@@ -159,6 +159,7 @@ def obter_informacoes_fonte_financiadora():
     🔹 **Fonte Financiadora**:
     - Para **fontes financiadoras** como **Procompi**, **B + P**, **ABDI**, etc., deve-se utilizar o **modelo Após Execução** com **Depósito em Conta**.
     """
+
 
 # Função para verificar se a pergunta é sobre formas de pagamento
 def verificar_pagamento(pergunta_usuario):
