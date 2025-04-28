@@ -27,8 +27,8 @@ def encontrar_resposta(pergunta_usuario):
             todas_chaves.append(chave)
             mapa_respostas[chave] = resposta
 
-    # Verificar se a pergunta é sobre "modelo de gestão"
-    if verificar_modelo_de_gestao(pergunta_usuario.lower()):
+    # Verificar se a pergunta é sobre "modelo"
+    if verificar_modelo(pergunta_usuario.lower()):
         return mapa_respostas["modelo de gestão"]  # Resposta para "Modelos de Gestão"
 
     # Verificar se a pergunta é sobre "cadastrar empresa no Moskit"
@@ -122,9 +122,9 @@ def encontrar_resposta(pergunta_usuario):
         return "❌ Ainda não sei responder essa pergunta. Tente outra pergunta ou fale com o Mateus!"
 
 
-# Função para verificar se a pergunta é sobre "modelo de gestão"
+# Função para verificar se a pergunta é sobre "modelo"
 def verificar_modelo(pergunta_usuario):
-    palavra_chave_modelo = "modelo de gestão"
+    palavra_chave_modelo = "modelo"
     
     # Verificar se a palavra "modelo" está na pergunta
     if fuzz.partial_ratio(pergunta_usuario, palavra_chave_modelo) > 80:
