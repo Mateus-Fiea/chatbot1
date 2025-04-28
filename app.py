@@ -75,6 +75,22 @@ def encontrar_resposta(pergunta_usuario):
     if verificar_sebrae(pergunta_usuario.lower()):
         return mapa_respostas["sebrae"]
     
+    # Verificar se a pergunta é sobre "mensal"
+    if verificar_mensal(pergunta_usuario.lower()):
+        return mapa_respostas["mensal"]
+
+    # Verificar se a pergunta é sobre "após execução"
+    if verificar_apos_execucao(pergunta_usuario.lower()):
+        return mapa_respostas["após execução"]
+
+    # Verificar se a pergunta é sobre "após assinatura"
+    if verificar_apos_assinatura(pergunta_usuario.lower()):
+        return mapa_respostas["após assinatura"]
+
+    # Verificar se a pergunta é sobre "após pagamento"
+    if verificar_apos_pagamento(pergunta_usuario.lower()):
+        return mapa_respostas["após pagamento"]
+         
     # Verificar se a pergunta é sobre "forma de pagamento"
     if verificar_forma_pagamento(pergunta_usuario.lower()):
         return mapa_respostas["forma de pagamento"]
@@ -228,6 +244,34 @@ def verificar_aba_produto(pergunta_usuario):
 def verificar_sebrae(pergunta_usuario):
     palavras_chave_sebrae = ["sebrae"]
     for palavra in palavras_chave_sebrae:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+def verificar_mensal(pergunta_usuario):
+    palavras_chave_mensal = ["mensal", "modelo mensal"]
+    for palavra in palavras_chave_mensal:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+def verificar_apos_execucao(pergunta_usuario):
+    palavras_chave_apos_execucao = ["após execução", "modelo após execução"]
+    for palavra in palavras_chave_apos_execucao:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+def verificar_apos_assinatura(pergunta_usuario):
+    palavras_chave_apos_assinatura = ["após assinatura", "modelo após assinatura"]
+    for palavra in palavras_chave_apos_assinatura:
+        if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
+            return True
+    return False
+
+def verificar_apos_pagamento(pergunta_usuario):
+    palavras_chave_apos_pagamento = ["após pagamento", "modelo após pagamento"]
+    for palavra in palavras_chave_apos_pagamento:
         if fuzz.partial_ratio(pergunta_usuario, palavra) > 80:
             return True
     return False

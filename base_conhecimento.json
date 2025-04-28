@@ -1,7 +1,7 @@
 {
   "Modelos de Gestão": {
     "modelo de gestão": "🔹 **Modelo de Gestão**:\n- Mensal\n- Após a execução\n- Após Assinatura\n- Após Pagamento",
-    "modelo mensal": "🔹 **Mensal**:\n- Permitido para: Combo SST, Aprendizagem, Curso Técnico (12 a 24 parcelas)\n- Ginástica Laboral e Mão de Obra Especializada (12 parcelas)\n- Forma: Boleto\n- ❌ Não permitido para: Locação de Espaços",
+    "mensal": "🔹 **Mensal**:\n- Permitido para: Combo SST, Aprendizagem, Curso Técnico (12 a 24 parcelas)\n- Ginástica Laboral e Mão de Obra Especializada (12 parcelas)\n- Forma: Boleto\n- ❌ Não permitido para: Locação de Espaços",
     "após execução": "🔹 **Após Execução**:\n- Não permite parcelamento\n- Apenas boleto bancário, exceto quando tiver fonte financiadora, que será depósito em conta\n- ❌ Não pode ser usado com Locação de Espaços",
     "após assinatura": "🔹 **Após Assinatura**:\n- Até 10 parcelas (até 12 se for Mão de Obra Especializada com medição mensal)\n- ❌ Não aceita Depósito em Conta, exceto quando for gratuidade de aprendizagem",
     "após pagamento": "🔹 **Após Pagamento**:\n- Máximo 2 parcelas\n- Usado para Locação e clientes inadimplentes\n- ❌ Não usar Depósito em Conta",
